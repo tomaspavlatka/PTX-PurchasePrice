@@ -1,20 +1,20 @@
 <?php
 
-class PriceCounterTest extends PHPUnit_Framework_TestCase {
+class PurchasePriceTest extends PHPUnit_Framework_TestCase {
 
-    protected $PriceCounter;
+    protected $PurchasePrice;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->PriceCounter = new PriceCounter();
+        $this->PurchasePrice = new PTX\PurchasePrice();
     }
 
 
     protected function tearDown()
     {
         parent::tearDown();
-        unset($this->PriceCounter);
+        unset($this->PurchasePrice);
     }
 
     /**
@@ -24,7 +24,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
     {
         $product_data = array(
             'price' => '79.96', 'tax_percentage' => 19);
-        $total_price = $this->PriceCounter->count_product_total($product_data, $quantity);
+        $total_price = $this->PurchasePrice->count_product_total($product_data, $quantity);
 
         // Compare.
         $this->assertEquals($total_price, $expected, $quantity);
@@ -35,7 +35,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
         $product_data = array(
             'price' => '79.96', 'tax_percentage' => 19,
             'discount' => 20, 'discount_type' => 'fix');
-        $complete_data = $this->PriceCounter->complete_discount_info($product_data);
+        $complete_data = $this->PurchasePrice->complete_discount_info($product_data);
 
         $expected = array(
             'price' => 79.96,
@@ -53,7 +53,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
         $product_data = array(
             'price' => '79.96', 'tax_percentage' => 19,
             'discount' => 100, 'discount_type' => 'fix');
-        $complete_data = $this->PriceCounter->complete_discount_info($product_data);
+        $complete_data = $this->PurchasePrice->complete_discount_info($product_data);
 
         $expected = array(
             'price' => 79.96,
@@ -71,7 +71,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
         $product_data = array(
             'price' => '79.96', 'tax_percentage' => 19,
             'discount' => 100, 'discount_type' => 'fixx');
-        $complete_data = $this->PriceCounter->complete_discount_info($product_data);
+        $complete_data = $this->PurchasePrice->complete_discount_info($product_data);
 
         $expected = array(
             'price' => 79.96,
@@ -89,7 +89,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
         $product_data = array(
             'price' => '79.96', 'tax_percentage' => 19,
             'discount' => 20, 'discount_type' => 'percentage');
-        $complete_data = $this->PriceCounter->complete_discount_info($product_data);
+        $complete_data = $this->PurchasePrice->complete_discount_info($product_data);
 
         $expected = array(
             'price' => 79.96,
@@ -107,7 +107,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
         $product_data = array(
             'price' => '79.96', 'tax_percentage' => 19,
             'discount' => 100, 'discount_type' => 'percentage');
-        $complete_data = $this->PriceCounter->complete_discount_info($product_data);
+        $complete_data = $this->PurchasePrice->complete_discount_info($product_data);
 
         $expected = array(
             'price' => 79.96,
@@ -127,7 +127,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
                 'price' => '79.96', 'tax_percentage' => 19, 'quantity' => 5),
             array(
                 'price' => '67.79', 'tax_percentage' => 19, 'quantity' => 10));
-        $total_price = $this->PriceCounter->count_total($products_data);
+        $total_price = $this->PurchasePrice->count_total($products_data);
 
         // Expected.
         $expected = array(
@@ -148,7 +148,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
                 'price' => '79.96', 'tax_percentage' => 19, 'quantity' => 5),
             array(
                 'price' => '67.79', 'tax_percentage' => 5, 'quantity' => 10));
-        $total_price = $this->PriceCounter->count_total($products_data);
+        $total_price = $this->PurchasePrice->count_total($products_data);
 
         // Expected.
         $expected = array(
@@ -170,7 +170,7 @@ class PriceCounterTest extends PHPUnit_Framework_TestCase {
                 'price' => '79.96', 'tax_percentage' => 19, 'quantity' => 5, 'discount' => 20, 'discount_type' => 'fix'),
             array(
                 'price' => '67.79', 'tax_percentage' => 19, 'quantity' => 10, 'discount' => 10, 'discount_type' => 'percentage'));
-        $total_price = $this->PriceCounter->count_total($products_data);
+        $total_price = $this->PurchasePrice->count_total($products_data);
 
         // Expected.
         $expected = array(

@@ -1,6 +1,8 @@
 <?php
 
-class PriceCounter {
+namespace PTX;
+
+class PurchasePrice {
 
     public function __construct()
     {
