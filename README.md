@@ -12,9 +12,17 @@ require_once './vendor/autoload.php';
 
 products_data = array(
     array(
-        'price' => '79.96', 'tax_percentage' => 19, 'quantity' => 5, 'discount' => 20, 'discount_type' => 'fix'),
+        'price'          => '79.96',
+        'tax_percentage' => 19,
+        'quantity'       => 5,
+        'discount'       => 20,
+        'discount_type'  => 'fix'),
     array(
-        'price' => '67.79', 'tax_percentage' => 19, 'quantity' => 10, 'discount' => 10, 'discount_type' => 'percentage'));
+        'price'          => '67.79',
+        'tax_percentage' => 19,
+        'quantity'       => 10,
+        'discount'       => 10,
+        'discount_type'  => 'percentage'));
 
 $purchasePrice = new \PTX\PurchasePrice();
 $total_price = $this->PurchasePrice->count_total($products_data);
