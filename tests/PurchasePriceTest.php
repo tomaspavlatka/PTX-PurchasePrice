@@ -18,6 +18,10 @@ class PurchasePriceTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
+     *
+     * @param int $quantity
+     * @param array $expected
+     *
      * @dataProvider data_testCountProductTotal
      */
     public function testCountProductTotal_Quantity_CorrectTotal($quantity, $expected)
